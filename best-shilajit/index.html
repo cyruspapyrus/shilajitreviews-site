@@ -2041,7 +2041,9 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
   try{localStorage.setItem('sr_click',JSON.stringify(saved))}catch(e){}
   function decorate(a){
     try{ var u=new URL(a.getAttribute('href'), location.href); if(!/(^|\.)holyshilajit\.com$/.test(u.hostname)) return;
-      Object.keys(saved).forEach(function(k){ if(!u.searchParams.get(k)) u.searchParams.set(k, saved[k]); });
+      Object.keys(saved).forEach(function(k){ var cur=u.searchParams.get(k);
+        if(!cur) u.searchParams.set(k, saved[k]);
+        else if(k==='utm_content' && saved[k] && saved[k]!==cur && cur.indexOf(saved[k]+'__')!==0) u.searchParams.set(k, saved[k]+'__'+cur); });
       a.href=u.toString(); }catch(e){}
   }
   document.querySelectorAll('a[href]').forEach(decorate);
