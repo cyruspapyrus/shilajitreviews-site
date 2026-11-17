@@ -11,7 +11,7 @@
  * Any error, or a browser that can keep neither localStorage nor a cookie, leaves the original link.
  *
  * Turn the whole test on or off with this one constant: */
-var LINEUP60_SPLIT = false;
+var LINEUP60_SPLIT = true;
 
 (function () {
   var KEY = 'sr_lineup', SHOTS = '/pages/shilajit-shots', SHOTS60 = '/pages/shilajit-shots-60';
